@@ -1,10 +1,8 @@
-//
 //  ViewController.swift
 //  Guessing Game iOS
 //
-//  Created by Solomon Keiffer on 9/21/18.
+//  Created by Solomon Kieffer on 9/21/18.
 //  Copyright © 2018 Phoenix Development. All rights reserved.
-//
 
 import UIKit
 
