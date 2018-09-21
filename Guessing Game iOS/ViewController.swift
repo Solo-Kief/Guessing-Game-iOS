@@ -59,6 +59,7 @@ class ViewController: UIViewController {
         if guessAmt.progress == 0 {
             self.view.backgroundColor = UIColor.red
             announce.text = "Try Again?"
+            numberField.text = "It Was: \(randNo)"
             button.setTitle("Retry?", for: .normal)
         }
         
@@ -67,4 +68,3 @@ class ViewController: UIViewController {
         }
     }
 }
-
