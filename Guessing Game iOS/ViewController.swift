@@ -18,8 +18,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         randNo = Int.random(in: 1...100)
+        numberField.keyboardType = .numberPad
     }
-
+    
     @IBAction func Guess(_ sender: Any) {
         guard announce.text != "Try Again?" && announce.text != "Correct" else {
             button.setTitle("Guess", for: .normal)
