@@ -45,6 +45,12 @@ class ViewController: UIViewController {
             return
         }
         
+        guard guess >= 1 && guess <= 100 else{
+            self.view.backgroundColor = UIColor.red
+            button.setTitle("Between 1 and 100!", for: .normal)
+            return
+        }
+        
         if guess == randNo {
             self.view.backgroundColor = UIColor.green
             announce.text = "Correct"
