@@ -47,7 +47,7 @@ class SettingsViewController: UIViewController {
             upperBoundField.text = "25"
         }
         if updateUpperBound > 250 {
-            updateUpperBound = 25
+            updateUpperBound = 250
             upperBoundField.text = "250"
         }
         SettingsViewController.upperBound = updateUpperBound

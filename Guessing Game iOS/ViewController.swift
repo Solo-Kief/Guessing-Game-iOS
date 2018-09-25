@@ -35,7 +35,11 @@ class ViewController: UIViewController {
             randNo = Int.random(in: 1...SettingsViewController.upperBound)
             guessAmt.progress = 1
             numberField.text = ""
-            self.view.backgroundColor = UIColor.white
+            if SettingsViewController.doColor {
+                self.view.backgroundColor = UIColor.init(hue: CGFloat(SettingsViewController.hue), saturation: 1, brightness: 1, alpha: 1)
+            } else {
+                self.view.backgroundColor = UIColor.white
+            }
             return
         }
         
