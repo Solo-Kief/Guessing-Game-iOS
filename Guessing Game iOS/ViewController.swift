@@ -19,11 +19,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         randNo = Int.random(in: 1...100)
         numberField.keyboardType = .numberPad
-        
-        self.hideKeyboardWhenTappedAround() //See Bottom
+        //self.hideKeyboardWhenTappedAround() //See Bottom
     }
-    
-    
     
     @IBAction func Guess(_ sender: Any) {
         guard announce.text != "Try Again?" && announce.text != "Correct" else {
@@ -47,18 +44,21 @@ class ViewController: UIViewController {
         guard let guess = Int(numberField.text!) else {
             self.view.backgroundColor = UIColor.red
             button.setTitle("Guess A Number", for: .normal)
+            numberField.text = ""
             return
         }
         
         guard guess >= 1 && guess <= 100 else{
             self.view.backgroundColor = UIColor.red
             button.setTitle("Between 1 and 100!", for: .normal)
+            numberField.text = ""
             return
         }
         
         if guess == randNo {
             self.view.backgroundColor = UIColor.green
             announce.text = "Correct"
+            view.endEditing(true) //Dismisses the keyboard
         } else if guess > randNo {
             guessAmt.progress -= 0.125
             announce.text = "Too High"
@@ -68,6 +68,7 @@ class ViewController: UIViewController {
         }
         
         if guessAmt.progress == 0 {
+            view.endEditing(true)
             self.view.backgroundColor = UIColor.red
             announce.text = "Try Again?"
             numberField.text = "It Was: \(randNo)"
@@ -81,14 +82,14 @@ class ViewController: UIViewController {
 }
 
 // https://stackoverflow.com/questions/24126678/close-ios-keyboard-by-touching-anywhere-using-swift
-extension UIViewController {
-    func hideKeyboardWhenTappedAround() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
-        tap.cancelsTouchesInView = false
-        view.addGestureRecognizer(tap)
-    }
-    
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-    }
-}
+//extension UIViewController {
+//    func hideKeyboardWhenTappedAround() {
+//        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+//        tap.cancelsTouchesInView = false
+//        view.addGestureRecognizer(tap)
+//    }
+//
+//    @objc func dismissKeyboard() {
+//        view.endEditing(true)
+//    }
+//}
