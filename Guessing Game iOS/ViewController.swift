@@ -19,7 +19,11 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         randNo = Int.random(in: 1...100)
         numberField.keyboardType = .numberPad
+        
+        self.hideKeyboardWhenTappedAround() //See Bottom
     }
+    
+    
     
     @IBAction func Guess(_ sender: Any) {
         guard announce.text != "Try Again?" && announce.text != "Correct" else {
@@ -73,5 +77,18 @@ class ViewController: UIViewController {
         if announce.text == "Correct" {
             button.setTitle("Play Again?", for: .normal)
         }
+    }
+}
+
+// https://stackoverflow.com/questions/24126678/close-ios-keyboard-by-touching-anywhere-using-swift
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 }
