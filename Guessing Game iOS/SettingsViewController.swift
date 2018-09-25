@@ -35,6 +35,7 @@ class SettingsViewController: UIViewController {
         } else {
             self.view.backgroundColor = UIColor.white
         }
+        upperBoundField.keyboardType = .numberPad
     }
     
     @IBAction func update(_ sender: Any) {
