@@ -7,7 +7,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    @IBOutlet weak var titleField: UILabel!
     @IBOutlet weak var numberField: UITextField!
     @IBOutlet weak var guessAmt: UIProgressView!
     @IBOutlet weak var button: UIButton!
@@ -17,8 +17,14 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        randNo = Int.random(in: 1...100)
+        randNo = Int.random(in: 1...SettingsViewController.upperBound)
         numberField.keyboardType = .numberPad
+        titleField.text = "Guess between 1 - \(SettingsViewController.upperBound)"
+        if SettingsViewController.doColor {
+            self.view.backgroundColor = UIColor.init(hue: CGFloat(SettingsViewController.hue), saturation: 1, brightness: 1, alpha: 1)
+        } else {
+            self.view.backgroundColor = UIColor.white
+        }
         //self.hideKeyboardWhenTappedAround() //See Bottom
     }
     
@@ -26,14 +32,16 @@ class ViewController: UIViewController {
         guard announce.text != "Try Again?" && announce.text != "Correct" else {
             button.setTitle("Guess", for: .normal)
             announce.text = ""
-            randNo = Int.random(in: 1...100)
+            randNo = Int.random(in: 1...SettingsViewController.upperBound)
             guessAmt.progress = 1
             numberField.text = ""
             self.view.backgroundColor = UIColor.white
             return
         }
         
-        if self.view.backgroundColor != UIColor.white {
+        if SettingsViewController.doColor {
+            self.view.backgroundColor = UIColor.init(hue: CGFloat(SettingsViewController.hue), saturation: 1, brightness: 1, alpha: 1)
+        } else {
             self.view.backgroundColor = UIColor.white
         }
         
@@ -48,9 +56,9 @@ class ViewController: UIViewController {
             return
         }
         
-        guard guess >= 1 && guess <= 100 else{
+        guard guess >= 1 && guess <= SettingsViewController.upperBound else{
             self.view.backgroundColor = UIColor.red
-            button.setTitle("Between 1 and 100!", for: .normal)
+            button.setTitle("Between 1 and \(SettingsViewController.upperBound)!", for: .normal)
             numberField.text = ""
             return
         }
@@ -58,6 +66,7 @@ class ViewController: UIViewController {
         if guess == randNo {
             self.view.backgroundColor = UIColor.green
             announce.text = "Correct"
+            SettingsViewController.addWin()
             view.endEditing(true) //Dismisses the keyboard
         } else if guess > randNo {
             guessAmt.progress -= 0.125
@@ -73,6 +82,7 @@ class ViewController: UIViewController {
             announce.text = "Try Again?"
             numberField.text = "It Was: \(randNo)"
             button.setTitle("Retry?", for: .normal)
+            SettingsViewController.addLoss()
         }
         
         if announce.text == "Correct" {
