@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C60FC042215AA97B007EAAED /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60FC041215AA97B007EAAED /* SettingsViewController.swift */; };
+		C60FC044215BC325007EAAED /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60FC043215BC325007EAAED /* Store.swift */; };
 		C6B3C20F215548860043C885 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B3C20E215548860043C885 /* AppDelegate.swift */; };
 		C6B3C211215548860043C885 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B3C210215548860043C885 /* ViewController.swift */; };
 		C6B3C214215548860043C885 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6B3C212215548860043C885 /* Main.storyboard */; };
@@ -17,6 +18,7 @@
 
 /* Begin PBXFileReference section */
 		C60FC041215AA97B007EAAED /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		C60FC043215BC325007EAAED /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		C6B3C20B215548860043C885 /* Guessing Game iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Guessing Game iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6B3C20E215548860043C885 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C6B3C210215548860043C885 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				C6B3C212215548860043C885 /* Main.storyboard */,
 				C6B3C215215548890043C885 /* Assets.xcassets */,
 				C6B3C21A215548890043C885 /* Info.plist */,
+				C60FC043215BC325007EAAED /* Store.swift */,
 			);
 			path = "Guessing Game iOS";
 			sourceTree = "<group>";
@@ -141,6 +144,7 @@
 				C6B3C211215548860043C885 /* ViewController.swift in Sources */,
 				C6B3C20F215548860043C885 /* AppDelegate.swift in Sources */,
 				C60FC042215AA97B007EAAED /* SettingsViewController.swift in Sources */,
+				C60FC044215BC325007EAAED /* Store.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -17,6 +17,16 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Remote Settings Update
+        let settings = Storage.call()
+        SettingsViewController.upperBound = settings.0
+        SettingsViewController.wins = settings.1
+        SettingsViewController.losses = settings.2
+        SettingsViewController.doColor = settings.3
+        SettingsViewController.hue = settings.4
+        //
+        
         randNo = Int.random(in: 1...SettingsViewController.upperBound)
         numberField.keyboardType = .numberPad
         titleField.text = "Guess between 1 - \(SettingsViewController.upperBound)"

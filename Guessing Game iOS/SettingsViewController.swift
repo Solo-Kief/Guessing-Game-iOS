@@ -25,17 +25,26 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
+        upperBoundField.keyboardType = .numberPad
+        
+        let settings = Storage.call()
+        SettingsViewController.upperBound = settings.0
+        SettingsViewController.wins = settings.1
+        SettingsViewController.losses = settings.2
+        SettingsViewController.doColor = settings.3
+        SettingsViewController.hue = settings.4
+        
         upperBoundField.text = String(SettingsViewController.upperBound)
         winCount.text = String(SettingsViewController.wins)
         loseCount.text = String(SettingsViewController.losses)
         doColorize.isOn = SettingsViewController.doColor
         colorHue.value = SettingsViewController.hue
+        
         if SettingsViewController.doColor {
             self.view.backgroundColor = UIColor.init(hue: CGFloat(SettingsViewController.hue), saturation: 1, brightness: 1, alpha: 1)
         } else {
             self.view.backgroundColor = UIColor.white
         }
-        upperBoundField.keyboardType = .numberPad
     }
     
     @IBAction func update(_ sender: Any) {
@@ -52,6 +61,7 @@ class SettingsViewController: UIViewController {
             upperBoundField.text = "250"
         }
         SettingsViewController.upperBound = updateUpperBound
+        Storage.push(upperBound: SettingsViewController.upperBound, wins: SettingsViewController.wins, losses: SettingsViewController.losses, isColorized: SettingsViewController.doColor, colorHue: SettingsViewController.hue)
     }
     
     static public func addWin() {
@@ -74,6 +84,7 @@ class SettingsViewController: UIViewController {
         colorHue.value = 0.5
         SettingsViewController.hue = 0.5
         self.view.backgroundColor = UIColor.white
+        Storage.push(upperBound: SettingsViewController.upperBound, wins: SettingsViewController.wins, losses: SettingsViewController.losses, isColorized: SettingsViewController.doColor, colorHue: SettingsViewController.hue)
     }
 
     @IBAction func colorSet(_ sender: Any) {
