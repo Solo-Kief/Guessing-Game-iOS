@@ -10,10 +10,12 @@ class ViewController: UIViewController {
     @IBOutlet weak var titleField: UILabel!
     @IBOutlet weak var numberField: UITextField!
     @IBOutlet weak var guessAmt: UIProgressView!
+    @IBOutlet weak var guessCounter: UILabel!
     @IBOutlet weak var button: UIButton!
     @IBOutlet weak var announce: UILabel!
     
     var randNo = 0
+    var guessCount = 8
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +46,8 @@ class ViewController: UIViewController {
             announce.text = ""
             randNo = Int.random(in: 1...SettingsViewController.upperBound)
             guessAmt.progress = 1
+            guessCount = 8
+            guessCounter.text = "8"
             numberField.text = ""
             if SettingsViewController.doColor {
                 self.view.backgroundColor = UIColor.init(hue: CGFloat(SettingsViewController.hue), saturation: 1, brightness: 1, alpha: 1)
@@ -84,9 +88,13 @@ class ViewController: UIViewController {
             view.endEditing(true) //Dismisses the keyboard
         } else if guess > randNo {
             guessAmt.progress -= 0.125
+            guessCount -= 1
+            guessCounter.text = String(guessCount)
             announce.text = "Too High"
         } else {
             guessAmt.progress -= 0.125
+            guessCount -= 1
+            guessCounter.text = String(guessCount)
             announce.text = "Too Low"
         }
         
