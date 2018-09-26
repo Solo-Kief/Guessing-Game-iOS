@@ -56,9 +56,9 @@ class SettingsViewController: UIViewController {
             updateUpperBound = 25
             upperBoundField.text = "25"
         }
-        if updateUpperBound > 500 {
-            updateUpperBound = 500
-            upperBoundField.text = "500"
+        if updateUpperBound > 1000 {
+            updateUpperBound = 1000
+            upperBoundField.text = "1000"
         }
         SettingsViewController.upperBound = updateUpperBound
         Storage.push(upperBound: SettingsViewController.upperBound, wins: SettingsViewController.wins, losses: SettingsViewController.losses, isColorized: SettingsViewController.doColor, colorHue: SettingsViewController.hue)
