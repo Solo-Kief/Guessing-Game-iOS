@@ -66,10 +66,12 @@ class SettingsViewController: UIViewController {
     
     static public func addWin() {
         wins += 1
+        Storage.push(upperBound: SettingsViewController.upperBound, wins: SettingsViewController.wins, losses: SettingsViewController.losses, isColorized: SettingsViewController.doColor, colorHue: SettingsViewController.hue)
     }
     
     static public func addLoss() {
         losses += 1
+        Storage.push(upperBound: SettingsViewController.upperBound, wins: SettingsViewController.wins, losses: SettingsViewController.losses, isColorized: SettingsViewController.doColor, colorHue: SettingsViewController.hue)
     }
     
     @IBAction func reset(_ sender: Any) {
